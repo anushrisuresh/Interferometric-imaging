@@ -23,14 +23,14 @@ xF = [xT xT2];
 yF = [yT yT2];
 zF = [zT zT2];
 
-% Receive array
+% Receive array horizontal
 dxR = c/f(end);            % receive antenna array sampling
 nbR = 51;                   % number of antennas
 xR = (1:nbR)*dxR;            % receive array coordinates
 xR = xR - mean(xR);          % centered on x = 0;
 yR = xR .*0;                 % receive array on the plane y = 0;
 
-% Receive array
+% Receive array vertical
 dzR = c/f(end);            % receive antenna array sampling
 nbR = 51;                   % number of antennas
 zR = (1:nbR)*dzR;            % receive array coordinates
@@ -38,7 +38,8 @@ zR = zR - mean(zR);          % centered on x = 0;
 yR = zR .*0;                 % receive array on the plane y = 0;
 
 zees = zeros(numel(xR));
-% Line target
+
+% Circle target
 
 xCenter = 0;
 yCenter = 0.9;
@@ -49,7 +50,6 @@ xa = radius * cos(theta) + xCenter;
 za = radius * sin(theta) + zCenter;
 ya = zeros(numel(xa)) + yCenter;
 SigC = ones(numel(xa));
-% for loops are used to facilitate understanding. It's a very bad idea if you try to optimize computation times
 
 S = zeros(nbR, numel(f));
 for mC = 1:numel(xa)
