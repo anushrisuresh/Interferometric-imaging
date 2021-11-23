@@ -32,7 +32,6 @@ xa = 0:1;
 ya = 0.8*xa + 0.8;
 za = zeros(numel(xa));
 SigC = ones(numel(xa));
-% for loops are used to facilitate understanding. It's a very bad idea if you try to optimize computation times
 
 S = zeros(nbR, numel(f));
 for mC = 1:numel(xa)
@@ -57,10 +56,6 @@ G = reshape(G,[numel(xR)*numel(f),numel(x)*numel(y)]);
 % Reconstruction by matched filtering (phase compensation)
 Im = G'*S(:);
 Im = reshape(Im,[numel(x),numel(y)]); %from vector to matrix format
-
-%fig1 = figure(1); clf()
-%fig1.Position = [680 542 871 420];
-%subplot(2,4,[1 2 5 6])
 
 figure;
 plot3(xT,yT,0,'kv')
